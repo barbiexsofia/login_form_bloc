@@ -5,6 +5,7 @@ import 'package:login_form_bloc/login_screen.dart';
 import 'package:login_form_bloc/palette.dart';
 
 void main() {
+  //MaterialPageRoute.debugEnableFadingRoutes = true;
   runApp(const MyApp());
 }
 
@@ -25,9 +26,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-// class Palette {
-//   static var gradient1;
-
-//   static var gradient2;
-// }
