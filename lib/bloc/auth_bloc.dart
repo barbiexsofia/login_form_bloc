@@ -13,21 +13,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   @override
   void onChange(Change<AuthState> change) {
     super.onChange(change);
-    print('AuthBloc - Change - $change');
-    if (change.currentState is AuthLoading && change.nextState is AuthFailure) {
-      print('something went wrong and couldn\'t log in');
-    }
+    // print('AuthBloc - Change - $change');
+    // if (change.currentState is AuthLoading && change.nextState is AuthFailure) {
+    //   print('something went wrong and couldn\'t log in');
+    // }
   }
 
   @override
   void onTransition(Transition<AuthEvent, AuthState> transition) {
     super.onTransition(transition);
-    print('AuthBloc - Transition - $transition');
+    //print('AuthBloc - Transition - $transition');
   }
 
   // @override
   // void onError(Object error, StackTrace stackTrace) {
-  //   // TODO: implement onError
   //   super.onError(error, stackTrace);
   // }
 

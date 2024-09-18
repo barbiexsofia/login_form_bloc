@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:login_form_bloc/bloc/auth_bloc.dart';
 import 'package:login_form_bloc/login_screen.dart';
 import 'package:login_form_bloc/palette.dart';
+import 'package:login_form_bloc/widgets/app_bloc_observer.dart';
 
 void main() {
+  Bloc.observer = AppBlocObserver();
   //MaterialPageRoute.debugEnableFadingRoutes = true;
   runApp(const MyApp());
 }

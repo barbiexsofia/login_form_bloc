@@ -12,35 +12,35 @@ class HomeScreen extends StatelessWidget {
     //final authState = context.watch<AuthBloc>().state as AuthSuccess;
     return Scaffold(
         appBar: AppBar(),
-        body: BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) {
-            if (state is AuthInitial) {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ),
-                  (route) => false);
-            }
-          },
-          builder: (context, state) {
-            if (state is AuthLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
+        body: BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
+          if (state is AuthInitial) {
+            Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginScreen(),
+                ),
+                (route) => false);
+          }
+        }, builder: (context, state) {
+          if (state is AuthLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          if (state is AuthSuccess) {
             return Center(
               child: Column(
                 children: [
-                  Text((state as AuthSuccess).uid),
+                  Text(state.uid),
                   GradientButton(onPressed: () {
                     context.read<AuthBloc>().add(AuthLogoutRequested());
                   }),
                 ],
               ),
             );
-          },
-        )
+          }
+          return const SizedBox.shrink();
+        })
         // Instead of BlocBuild i can also use context.watch before returning the entire scaffold,
         // but this will rebuild the entire view whenever something changes instead of just this part:
         // body: BlocBuilder<AuthBloc, AuthState>(
